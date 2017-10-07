@@ -1,0 +1,72 @@
+
+
+
+
+.container{
+    width: 90%vw;
+    height: 800px;
+    background-color: yellow;
+    text-align: center;
+
+}
+
+.nameBanner{
+  height: 100px;
+  width: 600px;
+  background-color: green;
+}
+
+#startButton{
+    height: 50px;
+    width: 200px;
+    background-color: lime;
+
+}
+
+.question{
+  height: 400px;
+  width: 250;
+  background-color: red;
+  display: block;
+}
+
+#ques{
+
+  /*visibility: hidden;*/
+
+}
+
+
+
+h4{
+  padding:10px;
+}
+.picDiv{
+  height: 100px;
+  width:150px;
+  background-color: orange;
+  padding: 20px;
+  /*padding-top: 20px;*/
+
+}
+
+#ansDiv{
+  height: 160px;
+  width: 200px;
+  background-color: purple;
+}
+
+.ansButton{
+  height: 20px;
+  width: 150px;
+  margin: 5px;
+  background-color: cornflowerblue;
+}
+
+#counter{
+  height: 50px;
+  width: 300px;
+  background-color: blue;
+  margin-top: 75px ;
+}
+
