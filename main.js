@@ -1,9 +1,10 @@
 
+
 let questionDiv = $('.question')
 let start = $('#startButton')
 let categoriesDiv = $('.categoriesSpot')
 let categoriesButton = $('.categories')
-let counter = $('#counter')
+let counter = $('#counter span')
 let answer = document.getElementsByClassName('.ansButton')
 let count = 0;
 
@@ -11,218 +12,108 @@ let count = 0;
 // --------------------------- This function has the start button disappear on click, and the 5 categories divs appear ----------------------//
 $("#startButton").click(function(){
   console.log('click works');
-  start.attr('id','ques'); //adds the #'ques'  visibility:hidden
+  start.attr('id','ques'); //adds the #'ques' for visibility:hidden
   console.log('set atrr id works');
   categoriesDiv.removeAttr('id'); //removes the #categories with visibility:hidden categories buttons now appear
   console.log('works!');
 });
 
-//---------------------------- This function has the categories buttons trigger the question card appearance -------------------//
+//------------------------------- This function has the categories buttons trigger the question card appearance ------------------------//
 
 $(".categories").click(function(){ //any of the category buttons triggers the question card
     console.log('click works');
     questionDiv.removeAttr('id'); //removes the id ques2 with visibility: hidden
     console.log('question shows!');
+    // categoriesDiv.removeAttr('id');
 });
 
-function counting(){
-  console.log(counter);
-  counter.html(count);
+//------------------------------- This constructor creates the category questions -----------------------------------//
+
+function QuestionCard(pic,answers,correct){
+  this.pic = pic;
+  this.answers = answers;
+  this.correct = correct;
 }
-counting();
+                //--------- This is the array that populates questions for Greens category ---------//
 
-function adding(){
-    for(i = 0; i < answer.length; i++) {
-      answer[i].addEventListener('click', function() {
+let greensCategory = [
+  new QuestionCard('./images/arugula.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Arugula'),
+  new QuestionCard('./images/watercress.png', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Watercress'),
+  new QuestionCard('./images/mizuna.png', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Mizuna'),
+  new QuestionCard('./images/radicchio.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Radicchio'),
+  new QuestionCard('./images/frisee.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Frisee')
+]
+let index = 0;
 
-         counter.html(++count);
+             //------- This function iterates through the array to create the 5 questions -------//
 
-      })
+function changeQuestion(index){
+  document.querySelector('#pic').src =  greensCategory[index].pic;
+  document.getElementById('a').innerHTML = greensCategory[index].answers[0];
+  document.getElementById('b').innerHTML = greensCategory[index].answers[1];
+  document.getElementById('c').innerHTML = greensCategory[index].answers[2];
+  document.getElementById('d').innerHTML = greensCategory[index].answers[3];
+  document.getElementById('e').innerHTML = greensCategory[index].answers[4];
 
-  }
+}
 
-adding()};
+changeQuestion(index);
 
-// counter.html(++count)  needs to be added to logic function
-// function giveAnswer(answer){
-//   if (answer = correct)
-// }
+//Assistance by Dom, & Patrick
+let buttons = document.querySelectorAll('.ansButton');
 
+ //------------------------- This functions creates the click conditions -------------------------//
 
-//  function question1(){
+  for (let i = 0; i < buttons.length; i++){
+    buttons[i].addEventListener('click',function(){
+      console.log('im clicked', i)
+        if(this.innerHTML === greensCategory[index].correct){ //correct answer chosen
+            //show ck div
+            count++;                  //++var = increments the counter
+            counter.text(count);      //shows the score increments in the counter
+            index++;                  //moves index up
+            console.log('index', index)
 
-//  }
+                if(index < greensCategory.length){ //checks to see if there is
+                  changeQuestion(index);          //get the next card
 
+                }
 
-//////////////////////
-//   REVERSE ENGINEER THEN DELETE
-//////////////////////
+                  else{
+                    alert(`${count} out of 5!}`);
+                    document.getElementById('startButton');
+                    if( `${count}` <= 3 ) {
+                      document.getElementById('winModal')
+                    }
+                  }
 
+      }
 
-// let greens = ['arugula', 'frisee', 'radicchio', 'watercress', 'mizuna'];
-// let fruits = [];
-// let vegetables = [];
-// let grains = [];
-// let spices = [];
-// let count = 0;
+          else{
+            //show x div
+            alert("incorrect");
+            index++;
 
-// function questionCard(question,pic,answerA,answerB,answerC,answerD,answerE,correct){
-//   this.question = question;
-//   this.pic = pic;
-//   this.answerA = answerA;
-//   this.answerB = answerB;
-//   this.answerC = answerC;
-//   this.answerD = answerD;
-//   this.answerE = answerE;
-//   this.correct = correct;
-// }
+                if(index < greensCategory.length){
+                          changeQuestion(index)  //get the next card
 
-// let questionCard1 = new questionCard("Can you identify this ingredient?","./images/i_dont_exist.jpg","ingredient A","ingredient b","ingredient c","ingredient d","ingredient e","e");
-// console.log(questionCard1);
+                        }
+                          else{
+                            alert(`${count} out of 5!}`)
+                            document.getElementById('startButton');
+                          }
 
-// greens[0] = questionCard1;
-// console.log(greens[0]);
-
-///////////////////
-// Significant assistance by Patrick
-///////////////////
-
-// function showCard(category,cardIndex){
-//   //category[cardIndex] greens[0  /*meaning arugula*/]
-//   let container = document.querySelector('#cardSpot');
-//   let currentCard = document.createElement('div');
-//   currentCard.className = "question";
-//   currentCard.id = "ques";
-//   container.appendChild(currentCard);
-
-// function questionAppear(category, cardIndex){
-// let questionContainer = $('#cardSpot')
-// let currentCard = document.createElement('div');
-// currentCard.className = "question";
-// currentCard = "ques";
-// conatiner.appendChild(currentCard);
-// }
-
-//   let currentCardQuestion = document.createElement('h4');
-//   currentCardQuestion.innerHTML = category[cardIndex].question;
-//   currentCard.appendChild(currentCardQuestion);
-//   let currentCardPic = document.createElement('div');
-//   currentCardPic.className = 'picDiv';
-//   currentCardPic.innerHTML = "Picture";
-//   currentCard.appendChild(currentCardPic);
-//   let currentCardButtonContainer = document.createElement('div');
-//   currentCardButtonContainer.id = "ansDiv";
-//   currentCard.appendChild(currentCardButtonContainer);
-
-// //Dry this up
-    // const baddies = [
-    //   'Sauron',
-    //   'Saruman',
-    //   'The Uruk-hai',
-    //   'Orcs'
-    // ];
-//     function makeBaddies() {
-//   // display an unordered list of baddies in Mordor
-//   let mordorUl = document.createElement('ul');
-//   let mordor = document.getElementById('mordor')
-//   mordorUl.setAttribute('id', 'baddiesList')
-
-//   for(let baddy of baddies){
-//     let currentBaddy = document.createElement('li');
-//     currentBaddy.setAttribute('class', 'baddy');
-//     currentBaddy.innerHTML = baddy;
-//     mordorUl.appendChild(currentBaddy);
-//   }
-// mordor.appendChild(mordorUl);
-// }
-// const buttons = [
-//   'buttonA',
-//   'buttonB',
-//   'buttonC',
-//   'buttonD',
-//   'buttonE',
-// ];
-
-// function makeCardButtons() {
-//   // display an unordered list of baddies in Mordor
-//   let answerButtons = document.createElement('button');
-//   let mordor = document.getElementById('mordor')
-//   answerButtons.setAttribute('id', 'baddiesList')
-
-//   for(let button of baddies){
-//     let currentBaddy = document.createElement('li');
-//     currentBaddy.setAttribute('class', 'baddy');
-//     currentBaddy.innerHTML = baddy;
-//     mordorUl.appendChild(currentBaddy);
-//   }
-// mordor.appendChild(mordorUl);
-// }
-
-//   let buttonA = document.createElement('button');
-//   buttonA.className = 'ansButton';
-//   buttonA.id = 'a';
-//   buttonA.innerHTML = category[cardIndex].answerA;
-//   currentCardButtonContainer.appendChild(buttonA);
-
-//   let buttonB = document.createElement('button');
-//   buttonB.className = 'ansButton';
-//   buttonB.id = 'b';
-//   buttonB.innerHTML = category[cardIndex].answer2;
-//   currentCardButtonContainer.appendChild(buttonB);
-
-//   let buttonC = document.createElement('button');
-//   buttonC.className = 'ansButton';
-//   buttonC.id = 'c';
-//   buttonC.innerHTML = category[cardIndex].answer3;
-//   currentCardButtonContainer.appendChild(buttonC);
-
-//   let buttonD = document.createElement('button');
-//   buttonD.className = 'ansButton';
-//   buttonD.id = 'd';
-//   buttonD.innerHTML = category[cardIndex].answer4;
-//   currentCardButtonContainer.appendChild(buttonD);
-
-//   let buttonE = document.createElement('button');
-//   buttonE.className = 'ansButton';
-//   buttonE.id = 'e';
-//   buttonE.innerHTML = category[cardIndex].answer5;
-//   currentCardButtonContainer.appendChild(buttonE);
+            changeQuestion(index)//get the next card
+          }
+        })
+      }
 
 
 
-//   let buttons = document.querySelectorAll('.ansButton');
-//   for (let i = 0; i < buttons.length; i++){
-//     buttons[i].addEventListener('click',function(){
-//       if (this.id === category[cardIndex].correct){
-//         document.querySelector("#counter").innerHTML = ++count; //++var = increment first then assign; var++ = assign then increment
-//         //destroy this card
-//         //get the next card
-//       }
-//       else{
-//         alert("WRONG");
-//         //destroy this card
-//         //get the next card
-//       }
-//     })
-//   }
-// }
-
-// //showCard(greens,0);  example
 
 // /*function creating an array to store the count
-// if < =
-
-
-
-
-
-
-
-
-
-
-
-
+// array.counter => <=3/5 trigger loss modal
+                          // trigger win modal
 
 
 
