@@ -8,23 +8,27 @@ let counter = $('#counter span')
 let answer = document.getElementsByClassName('.ansButton')
 let count = 0;
 
-
+//jQuery assistance by the awesome Ozzie
 // --------------------------- This function has the start button disappear on click, and the 5 categories divs appear ----------------------//
 $("#startButton").click(function(){
-  console.log('click works');
-  start.attr('id','ques'); //adds the #'ques' for visibility:hidden
-  console.log('set atrr id works');
-  categoriesDiv.removeAttr('id'); //removes the #categories with visibility:hidden categories buttons now appear
-  console.log('works!');
+  // console.log('click works');
+  // start.attr('id','ques'); //adds the #'ques' for visibility:hidden
+  // console.log('set atrr id works');
+  // categoriesDiv.removeAttr('id'); //removes the #categories with visibility:hidden categories buttons now appear
+  // console.log('works!');
+    start.fadeOut();
+    categoriesDiv.removeAttr('id');
 });
 
 //------------------------------- This function has the categories buttons trigger the question card appearance ------------------------//
 
 $(".categories").click(function(){ //any of the category buttons triggers the question card
+    $(".categories").fadeOut()
+    $(this).fadeIn()
     console.log('click works');
-    questionDiv.removeAttr('id'); //removes the id ques2 with visibility: hidden
+    questionDiv.removeAttr('id'); //removes the id ques2 with visibility: hidden so now visible
     console.log('question shows!');
-    // categoriesDiv.removeAttr('id');
+
 });
 
 //------------------------------- This constructor creates the category questions -----------------------------------//
@@ -68,8 +72,7 @@ let buttons = document.querySelectorAll('.ansButton');
     buttons[i].addEventListener('click',function(){
       console.log('im clicked', i)
         if(this.innerHTML === greensCategory[index].correct){ //correct answer chosen
-            //show ck div
-            count++;                  //++var = increments the counter
+            count++;                  //increments the counter when correct
             counter.text(count);      //shows the score increments in the counter
             index++;                  //moves index up
             console.log('index', index)
@@ -80,12 +83,12 @@ let buttons = document.querySelectorAll('.ansButton');
                 }
 
                   else{
-                    alert(`${count} out of 5!}`);
-                    document.getElementById('startButton');
-                    if( `${count}` <= 3 ) {
-                      document.getElementById('winModal')
-                    }
+                    alert(`${count} out of 5!`);
+                    document.getElementsByClassName('questionDiv');
+                    questionDiv.attr('id', 'ques2');
+                    $(".categories").fadeOut();
                   }
+
 
       }
 
@@ -99,21 +102,32 @@ let buttons = document.querySelectorAll('.ansButton');
 
                         }
                           else{
-                            alert(`${count} out of 5!}`)
-                            document.getElementById('startButton');
+                            alert(`${count} out of 5!`)
+                            document.getElementsByClassName('questionDiv');
+                            questionDiv.attr('id', 'ques2');
+
                           }
 
             changeQuestion(index)//get the next card
           }
+
+
         })
+
+                    if(count >=4){
+                    $('#winningModal').css('display','block');
+                    }
+                    else{
+                      // $('#losingModal').css('display','block');
+                    }
+
+
       }
 
 
 
 
-// /*function creating an array to store the count
-// array.counter => <=3/5 trigger loss modal
-                          // trigger win modal
+
 
 
 
