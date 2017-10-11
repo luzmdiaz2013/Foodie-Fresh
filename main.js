@@ -87,6 +87,7 @@ let buttons = document.querySelectorAll('.ansButton');
                     document.getElementsByClassName('questionDiv');
                     questionDiv.attr('id', 'ques2');
                     $(".categories").fadeOut();
+                     tellingOutCome()
                   }
 
 
@@ -101,10 +102,16 @@ let buttons = document.querySelectorAll('.ansButton');
                           changeQuestion(index)  //get the next card
 
                         }
-                          else{
-                            alert(`${count} out of 5!`)
+                          else if(count < 2) {
+                            console.log('tellingOutCome()')
+                            alert(`${count} out of 5!`);
+
+                              location.reload();
                             document.getElementsByClassName('questionDiv');
                             questionDiv.attr('id', 'ques2');
+                            $(".categories").fadeOut();
+
+
 
                           }
 
@@ -114,15 +121,41 @@ let buttons = document.querySelectorAll('.ansButton');
 
         })
 
-                    if(count >=4){
-                    $('#winningModal').css('display','block');
-                    }
-                    else{
-                      // $('#losingModal').css('display','block');
-                    }
+                    // if(count >=2){
+                    //   console.log(count,'<----')
+                    // // $('#winningModal').css('display','block','hello');
+                    // alert('winner');
+                    // location.reload();
+                    // }
+                    // else{
+                    //   $('#losingModal').css('display','block','is this being hit its num 2');
+                    // }
 
 
       }
+
+      function tellingOutCome(){
+                     if(count >=2){
+                      console.log(count,'<----')
+                     let win = $('#openModal')
+                    console.log(win,'<--win')
+
+                     // win.attr('id','win')
+                     win.attr('class','modalDialog')
+                     win.removeAttr('id')
+
+                     console.log(win)
+                   // alert('winner');
+                    // location.reload();
+                    }
+                    else{
+                      $('#losingModal').css('display','block','is this being hit its num 2');
+
+
+                    }
+      }
+
+      tellingOutCome()
 
 
 
