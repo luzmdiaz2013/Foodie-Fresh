@@ -7,6 +7,9 @@ let categoriesButton = $('.categories')
 let counter = $('#counter span')
 let answer = document.getElementsByClassName('.ansButton')
 let count = 0;
+let index = 0;
+
+// let buttons = document.querySelectorAll('.ansButton');
 
 //jQuery assistance by the awesome Ozzie Osman
 // --------------------------- This function has the start button disappear on click, and the 5 categories divs appear ----------------------//
@@ -38,6 +41,24 @@ function QuestionCard(pic,answers,correct){
   this.answers = answers;
   this.correct = correct;
 }
+                //--------- This is the array that populates questions for Fruits category ---------//
+
+let fruitsCategory = [
+  new QuestionCard('./images/fruitAcai.jpg', ['Soursop', 'Acai', 'Goji', 'Kumquat', 'Mangosteen'], 'Acai'),
+  new QuestionCard('./images/fruitGoji.jpeg', ['Soursop', 'Acai', 'Goji', 'Kumquat', 'Mangosteen'], 'Goji'),
+  new QuestionCard('./images/fruitMangosteen.jpg', ['Soursop', 'Acai', 'Goji', 'Kumquat', 'Mangosteen'], 'Mangosteen'),
+  new QuestionCard('./images/fruitSoursop.jpg', ['Soursop', 'Acai', 'Goji', 'Kumquat', 'Mangosteen'], 'Soursop'),
+  new QuestionCard('./images/fruitKumquat.jpeg', ['Soursop', 'Acai', 'Goji', 'Kumquat', 'Mangosteen'], 'Kumquat')
+]
+                //--------- This is the array that populates questions for Vegetables category ---------//
+
+let vegetablesCategory = [
+  new QuestionCard('./images/vegChayote.jpg', ['Caulerpa', 'Chayote', 'Fiddlehead', 'Kohlrabi', 'Romanesco'], 'Chayote'),
+  new QuestionCard('./images/vegCaulerpa.jpg', ['Caulerpa', 'Chayote', 'Fiddlehead', 'Kohlrabi', 'Romanesco'], 'Caulerpa'),
+  new QuestionCard('./images/vegRomanesco.png', ['Caulerpa', 'Chayote', 'Fiddlehead', 'Kohlrabi', 'Romanesco'], 'Romanesco' ),
+  new QuestionCard('./images/vegFiddlehead.png', ['Caulerpa', 'Chayote', 'Fiddlehead', 'Kohlrabi', 'Romanesco'], 'Fiddlehead'),
+  new QuestionCard('./images/vegKohlrabi.jpg', ['Caulerpa', 'Chayote', 'Fiddlehead', 'Kohlrabi', 'Romanesco'], 'Kohlrabi')
+]
                 //--------- This is the array that populates questions for Greens category ---------//
 
 let greensCategory = [
@@ -48,9 +69,27 @@ let greensCategory = [
   new QuestionCard('./images/frisee.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Frisee')
 ]
 
+                //--------- This is the array that populates questions for Grains category ---------//
 
+let grainsCategory = [
+  new QuestionCard('./images/grainsSpelt.jpg', ['Barley', 'Bulgur', 'Millet', 'Quinoa', 'Spelt'], 'Spelt'),
+  new QuestionCard('./images/grainsBarley.jpg', ['Barley', 'Bulgur', 'Millet', 'Quinoa', 'Spelt'], 'Barley'),
+  new QuestionCard('./images/grainsQuinoa.jpg', ['Barley', 'Bulgur', 'Millet', 'Quinoa', 'Spelt'], 'Quinoa'),
+  new QuestionCard('./images/grainsBulgur.png', ['Barley', 'Bulgur', 'Millet', 'Quinoa', 'Spelt'], 'Bulgur'),
+  new QuestionCard('./images/grainsMillet.png', ['Barley', 'Bulgur', 'Millet', 'Quinoa', 'Spelt'], 'Spelt')
+]
 
-let index = 0;
+                //--------- This is the array that populates questions for Spices category ---------//
+
+let spicesCategory = [
+  new QuestionCard('./images/spiceBrownMustard.jpg', ['Allspice', 'Annatto', 'Mustard', 'Caraway', 'Nigella'], 'Mustard'),
+  new QuestionCard('./images/spiceNigella.jpg', ['Allspice', 'Annatto', 'Mustard', 'Caraway', 'Nigella'], 'Nigella'),
+  new QuestionCard('./images/spiceAllspice.jpg', ['Allspice', 'Annatto', 'Mustard', 'Caraway', 'Nigella'], 'Allspice'),
+  new QuestionCard('./images/spiceCaraway.jpg', ['Allspice', 'Annatto', 'Mustard', 'Caraway', 'Nigella'], 'Caraway'),
+  new QuestionCard('./images/spiceAnnatto.jpg', ['Allspice', 'Annatto', 'Mustard', 'Caraway', 'Nigella'], 'Annatto')
+]
+
+// let index = 0;
 
              //------- This function iterates through the array to create the 5 questions -------//
 
@@ -66,14 +105,20 @@ function changeQuestion(index){
 
 changeQuestion(index);
 
-//Significant Assistance by Dom F., Patrick Shannon and Shomir Uddin
-let buttons = document.querySelectorAll('.ansButton');
+//Significant Assistance by Dom F., Patrick Shannon and Shomir Uddin, & Kyle Graber
+ let buttons = document.querySelectorAll('.ansButton');
+ // for(let i = 0; i < buttons.length; i++){
+ //  buttons[i].addEventListener('click',function(){
+ //     console.log('hi')
+ //  })
+ // }
+ // console.log(buttons)
 
  //------------------------- This functions creates the click conditions -------------------------//
 
   for (let i = 0; i < buttons.length; i++){
     buttons[i].addEventListener('click',function(){
-      console.log('im clicked', i)
+      console.log('im clicked')
         if(this.innerHTML === greensCategory[index].correct){ //correct answer chosen
             count++;                  //increments the counter when correct
             counter.text(count);      //shows the score increments in the counter
@@ -126,36 +171,115 @@ let buttons = document.querySelectorAll('.ansButton');
         })
 
 
-        // tellingOutCome();
+
 
       }
 
       function tellingOutCome(){
                      if(count >= 4){
-                      console.log(count,'<----')
-                    //  let win = $('#openModal')
-                    // console.log(win,'<--win')
-
-                     // win.attr('id','win')
-                     // win.attr('class','modalDialog')
-                     // win.removeAttr('id')
-
-                     // console.log(win)
-                     alert('Great Job Foodie! Try this winning recipe! https://www.youtube.com/watch?v=GVFMCAzs8vA');
-                     location.reload();
+                            console.log(count,'<----')
+                            alert('Great Job Foodie! Try this winning recipe! https://www.youtube.com/watch?v=GVFMCAzs8vA');
+                            location.reload();     //Recipe video from youTube.com
                     }
-                    else{
-                      alert('Good Effort!  Learn more here: https://www.epicurious.com/archive/seasonalcooking/farmtotable/visualguidesaladgreens');
-                      location.reload();
-
-                      // $('#closingModal').css('display','block');
-
+                      else{
+                            alert('Good Effort!  Learn more here: https://www.epicurious.com/archive/seasonalcooking/farmtotable/visualguidesaladgreens');
+                            location.reload();    //link from Epicurious.com
 
                     }
       }
 
-      // tellingOutCome()
 
+//------- This function iterates through the array to create the 5 questions -------//
+
+// function changeQuestion(index){
+//   document.querySelector('#pic').src =  grainsCategory[index].pic;
+//   document.getElementById('a').innerHTML = greensCategory[index].answers[0];
+//   document.getElementById('b').innerHTML = greensCategory[index].answers[1];
+//   document.getElementById('c').innerHTML = greensCategory[index].answers[2];
+//   document.getElementById('d').innerHTML = greensCategory[index].answers[3];
+//   document.getElementById('e').innerHTML = greensCategory[index].answers[4];
+
+// }
+
+// // changeQuestion(index);
+
+// //Significant Assistance by Dom F., Patrick Shannon and Shomir Uddin
+//  // buttons = document.querySelectorAll('.ansButton');
+
+//  //------------------------- This functions creates the click conditions -------------------------//
+
+//   for (let i = 0; i < buttons.length; i++){
+//     buttons[i].addEventListener('click',function(){
+//       console.log('im clicked', i)
+//       console.log(grainsCategory)
+//         if(this.innerHTML === grainsCategory[index].correct){ //correct answer chosen
+//             count++;                  //increments the counter when correct
+//             counter.text(count);      //shows the score increments in the counter
+//             index++;                  //moves index up
+//             console.log('index', index)
+
+//                 if(index < grainsCategory.length){ //checks to see if the array is done
+//                   changeQuestion(index);           //gets the next card
+
+//                 }
+
+//                   else{
+//                     console.log('tellingOutCome()')
+//                     alert(`${count} out of 5!`);
+//                     document.getElementsByClassName('questionDiv'); //grabs question div
+//                     questionDiv.attr('id', 'ques2'); // removes question div
+//                     $(".categories").fadeOut(); // removes the category button
+//                     tellingOutCome();
+//                     location.reload();
+//                   }
+
+
+//       }
+
+//           else{
+//             //show x div
+//             alert("incorrect");
+//             index++;
+
+//                     if(index < grainsCategory.length){  //checks to see if the array is done
+//                               changeQuestion(index)     //get the next card
+
+//                             }
+//                     else{
+//                           console.log('tellingOutCome()')
+//                           alert(`${count} out of 5!`);
+//                           document.getElementsByClassName('questionDiv'); //grabs question div
+//                           questionDiv.attr('id', 'ques2'); // removes question div
+//                           $(".categories").fadeOut(); // removes the category button
+//                           tellingOutCome();
+//                           location.reload();
+
+
+//                         }
+
+//             changeQuestion(index) //get the next card
+//           }
+
+
+//         })
+
+
+
+
+//       }
+
+//       function tellingOutCome(){
+//                      if(count >= 4){
+//                             console.log(count,'<----')
+//                             alert('Great Job Foodie! Try this winning recipe! https://www.youtube.com/watch?v=GVFMCAzs8vA');
+//                             location.reload();     //Recipe video from youTube.com
+//                     }
+//                       else{
+//                             alert('Good Effort!  Learn more here: https://www.epicurious.com/archive/seasonalcooking/farmtotable/visualguidesaladgreens');
+//                             location.reload();    //link from Epicurious.com
+
+//                     }
+//       }
 
 
 

@@ -1,13 +1,19 @@
 
 
-
+body{
+overflow: hidden;
+font-family: sans-serif;
+}
 
 .container{
-    width: 90%vw;
-    height: 900px;
-    background-color: yellow;
+    width: 100%;
+    height: 100%;
+    /*background-color: yellow;*/
     text-align: center;
-
+    background-image: url(./images/woodenCuttingBoard.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /*position: relative;*/
 }
 
 #win{
@@ -18,14 +24,30 @@
 }
 
 .nameBanner{
-  height: 100px;
-  width: 600px;
-  background-color: green;
+  height: 200px;
+  width: 800px;
+  /*background-color: black;
+  opacity: .5;*/
 }
 
-.categoriesSpot{
-  /*visibility: hidden;*/
+/*//Transparent text effect from: https://www.youtube.com/watch?v=kqtxpl-vxjw*/
+
+h1{
+  font-family: 'Anton', sans-serif;
+ /* margin: 0;*/
+ /* padding: 0;*/
+  color: white;
+  font-weight: bolder;
+  font-size: 8em;
+  text-align: center;
+  text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  mix-blend-mode: overlay;
+  box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  background: rbga(0, 0, 0, .4);
+ padding-bottom: 40px;
+
 }
+
 .categories{
   height: 50px;
   width: 200px;
@@ -40,8 +62,8 @@
 }
 
 #startButton{
-    height: 50px;
-    width: 100px;
+    height: 75px;
+    width: 200px;
     background-color: lime;
 
 }
@@ -83,16 +105,23 @@ h4{
   height: 160px;
   width: 300px;
   background-color: purple;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  justify-content: space-around;
 }
 
 .ansButton{
   height: 20px;
-  width: 150px;
+  width: 200px;
   margin: 5px;
   background-color: cornflowerblue;
-  display: block;
-  flex:4;
+  outline: none;
 }
+
+:focus{
+  outline: none;
+    }
 
 .buttonADiv{
   height: 25px;
@@ -103,85 +132,17 @@ h4{
   justify-content: space-around;
   align-items: center;
 }
-.x{
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-color: teal;
-  flex: 1;
-  margin: 2px;
 
-}
 
-.ck{
-  height: 20px;
-  width: 20px;
-  display: inline-block;
-  background-color: teal;
-  flex: 1;
-  margin: 2px;
-}
 #counter{
-  height: 50px;
+  height: 40px;
   width: 300px;
   background-color: blue;
-  margin-top: 20px;
+  bottom: 150px;
+  position: absolute;
+  padding: 30px;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 25px;
+
 }
-#openModal{
-  display:none;
-}
-/*This is the modal from PerScholas*/
-.modalDialog {
-      position: fixed;
-      font-family: Arial, Helvetica, sans-serif;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(0,0,0,0.8);
-      z-index: 99999;
-      /*opacity:0;*/
-      -webkit-transition: opacity 400ms ease-in;
-      -moz-transition: opacity 400ms ease-in;
-      transition: opacity 400ms ease-in;
-      pointer-events: none;
-      }
-
-      .modalDialog:target {
-        opacity:1;
-        pointer-events: auto;
-      }
-
-      .modalDialog > div {
-      width: 650px;
-      height: auto;
-      position: relative;
-      margin: 10% auto;
-      padding: 5px 20px 13px 20px;
-      border-radius: 10px;
-      background: #fff;
-      background: -moz-linear-gradient(#fff, #999);
-      background: -webkit-linear-gradient(#fff, #999);
-      background: -o-linear-gradient(#fff, #999);
-      }
-
-      .close {
-      background: #606061;
-      color: #FFFFFF;
-      line-height: 25px;
-      position: absolute;
-      right: -12px;
-      text-align: center;
-      top: -10px;
-      width: 24px;
-      text-decoration: none;
-      font-weight: bold;
-      -webkit-border-radius: 12px;
-      -moz-border-radius: 12px;
-      border-radius: 12px;
-      -moz-box-shadow: 1px 1px 3px #000;
-      -webkit-box-shadow: 1px 1px 3px #000;
-      box-shadow: 1px 1px 3px #000;
-      }
-
-.close:hover { background: #00d9ff; }
