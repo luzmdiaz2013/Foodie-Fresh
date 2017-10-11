@@ -8,7 +8,7 @@ let counter = $('#counter span')
 let answer = document.getElementsByClassName('.ansButton')
 let count = 0;
 
-//jQuery assistance by the awesome Ozzie
+//jQuery assistance by the awesome Ozzie Osman
 // --------------------------- This function has the start button disappear on click, and the 5 categories divs appear ----------------------//
 $("#startButton").click(function(){
   // console.log('click works');
@@ -23,10 +23,10 @@ $("#startButton").click(function(){
 //------------------------------- This function has the categories buttons trigger the question card appearance ------------------------//
 
 $(".categories").click(function(){ //any of the category buttons triggers the question card
-    $(".categories").fadeOut()
-    $(this).fadeIn()
+    $(".categories").fadeOut()     //all categories except the chosen one disappear
+    $(this).fadeIn()               //category chosen remains
     console.log('click works');
-    questionDiv.removeAttr('id'); //removes the id ques2 with visibility: hidden so now visible
+    questionDiv.removeAttr('id'); //removes the id ques2 with visibility: hidden so it's now visible
     console.log('question shows!');
 
 });
@@ -47,6 +47,9 @@ let greensCategory = [
   new QuestionCard('./images/radicchio.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Radicchio'),
   new QuestionCard('./images/frisee.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Frisee')
 ]
+
+
+
 let index = 0;
 
              //------- This function iterates through the array to create the 5 questions -------//
@@ -63,7 +66,7 @@ function changeQuestion(index){
 
 changeQuestion(index);
 
-//Assistance by Dom, & Patrick
+//Significant Assistance by Dom F., Patrick Shannon and Shomir Uddin
 let buttons = document.querySelectorAll('.ansButton');
 
  //------------------------- This functions creates the click conditions -------------------------//
@@ -77,17 +80,19 @@ let buttons = document.querySelectorAll('.ansButton');
             index++;                  //moves index up
             console.log('index', index)
 
-                if(index < greensCategory.length){ //checks to see if there is
-                  changeQuestion(index);          //get the next card
+                if(index < greensCategory.length){ //checks to see if the array is done
+                  changeQuestion(index);           //gets the next card
 
                 }
 
                   else{
+                    console.log('tellingOutCome()')
                     alert(`${count} out of 5!`);
-                    document.getElementsByClassName('questionDiv');
-                    questionDiv.attr('id', 'ques2');
-                    $(".categories").fadeOut();
-                     tellingOutCome()
+                    document.getElementsByClassName('questionDiv'); //grabs question div
+                    questionDiv.attr('id', 'ques2'); // removes question div
+                    $(".categories").fadeOut(); // removes the category button
+                    tellingOutCome();
+                    location.reload();
                   }
 
 
@@ -98,64 +103,58 @@ let buttons = document.querySelectorAll('.ansButton');
             alert("incorrect");
             index++;
 
-                if(index < greensCategory.length){
-                          changeQuestion(index)  //get the next card
+                    if(index < greensCategory.length){  //checks to see if the array is done
+                              changeQuestion(index)     //get the next card
+
+                            }
+                    else{
+                          console.log('tellingOutCome()')
+                          alert(`${count} out of 5!`);
+                          document.getElementsByClassName('questionDiv'); //grabs question div
+                          questionDiv.attr('id', 'ques2'); // removes question div
+                          $(".categories").fadeOut(); // removes the category button
+                          tellingOutCome();
+                          location.reload();
+
 
                         }
-                          else if(count < 2) {
-                            console.log('tellingOutCome()')
-                            alert(`${count} out of 5!`);
 
-                              location.reload();
-                            document.getElementsByClassName('questionDiv');
-                            questionDiv.attr('id', 'ques2');
-                            $(".categories").fadeOut();
-
-
-
-                          }
-
-            changeQuestion(index)//get the next card
+            changeQuestion(index) //get the next card
           }
 
 
         })
 
-                    // if(count >=2){
-                    //   console.log(count,'<----')
-                    // // $('#winningModal').css('display','block','hello');
-                    // alert('winner');
-                    // location.reload();
-                    // }
-                    // else{
-                    //   $('#losingModal').css('display','block','is this being hit its num 2');
-                    // }
 
+        // tellingOutCome();
 
       }
 
       function tellingOutCome(){
-                     if(count >=2){
+                     if(count >= 4){
                       console.log(count,'<----')
-                     let win = $('#openModal')
-                    console.log(win,'<--win')
+                    //  let win = $('#openModal')
+                    // console.log(win,'<--win')
 
                      // win.attr('id','win')
-                     win.attr('class','modalDialog')
-                     win.removeAttr('id')
+                     // win.attr('class','modalDialog')
+                     // win.removeAttr('id')
 
-                     console.log(win)
-                   // alert('winner');
-                    // location.reload();
+                     // console.log(win)
+                     alert('Great Job Foodie! Try this winning recipe! https://www.youtube.com/watch?v=GVFMCAzs8vA');
+                     location.reload();
                     }
                     else{
-                      $('#losingModal').css('display','block','is this being hit its num 2');
+                      alert('Good Effort!  Learn more here: https://www.epicurious.com/archive/seasonalcooking/farmtotable/visualguidesaladgreens');
+                      location.reload();
+
+                      // $('#closingModal').css('display','block');
 
 
                     }
       }
 
-      tellingOutCome()
+      // tellingOutCome()
 
 
 
