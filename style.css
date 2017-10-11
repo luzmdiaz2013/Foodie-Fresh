@@ -3,6 +3,8 @@
 body{
 overflow: hidden;
 font-family: sans-serif;
+margin: 0;
+
 }
 
 .container{
@@ -16,12 +18,12 @@ font-family: sans-serif;
     /*position: relative;*/
 }
 
-#win{
+/*#win{
   height:40px;
   width:40px;
   border:blue solid 2px;
   background-image:url('https://www.youtube.com/embed/GVFMCAzs8vA');
-}
+}*/
 
 .nameBanner{
   height: 200px;
@@ -36,15 +38,16 @@ h1{
   font-family: 'Anton', sans-serif;
  /* margin: 0;*/
  /* padding: 0;*/
-  color: white;
-  font-weight: bolder;
+  color: #fff;
+  /*font-weight: bolder;*/
   font-size: 8em;
   text-align: center;
   text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
   mix-blend-mode: overlay;
   box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
   background: rbga(0, 0, 0, .4);
- padding-bottom: 40px;
+  padding-bottom: 40px;
+  letter-spacing: 10px;
 
 }
 
@@ -52,7 +55,18 @@ h1{
   height: 50px;
   width: 200px;
   display: inline-block;
-  background-color: pink;
+  background-color: black;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 30px;
+  opacity: .8;
+  color: black;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  mix-blend-mode: overlay;
+  box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
   margin:10px;
 
 }
@@ -62,17 +76,30 @@ h1{
 }
 
 #startButton{
-    height: 75px;
-    width: 200px;
-    background-color: lime;
+  height: 60px;
+  width: 200px;
+  background-color: black;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 30px;
+  opacity: .8;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  mix-blend-mode: overlay;
+  box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  margin-bottom: 20px;
 
 }
 
 .question{
-  height: 500px;
-  width: 300;
-  background-color: red;
+  height: 300px;
+  width: 600px;
+  /*background-color: red;*/
   display: block;
+  margin-bottom: 80px;
 }
 
 #ques{
@@ -97,25 +124,40 @@ h4{
   width:150px;
   background-color: orange;
   padding: 20px;
+  background-size: cover;
+  background-repeat: no-repeat;
   /*padding-top: 20px;*/
 
 }
 
 #ansDiv{
-  height: 160px;
-  width: 300px;
-  background-color: purple;
+  height: 100px;
+  width: 600px;
+  /*background-color: purple;*/
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: flex-end;
   justify-content: space-around;
+
 }
 
 .ansButton{
-  height: 20px;
+  height: 40px;
   width: 200px;
   margin: 5px;
-  background-color: cornflowerblue;
+  background-color: black;
+  position: relative;
+  padding-bottom: 5px;
+  font-size: 20px;
+  opacity: 1;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 3px;
+  text-align: center;
+  text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  mix-blend-mode: overlay;
+  box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  margin-top: 80px;
   outline: none;
 }
 
@@ -135,14 +177,21 @@ h4{
 
 
 #counter{
-  height: 40px;
-  width: 300px;
-  background-color: blue;
-  bottom: 150px;
+  bottom: -20px;
+  height: 60px;
+  width: 200px;
+  background-color: black;
+  bottom: 100px;
   position: absolute;
-  padding: 30px;
+  left: 630px;
+  padding-top:  10px;
+  font-size: 30px;
+  opacity: .8;
+  color: white;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 2px;
   text-align: center;
-  font-weight: bolder;
-  font-size: 25px;
-
+  text-shadow: 0 10px 20px rbga(0, 0, 0, 1);
+  mix-blend-mode: overlay;
+  box-shadow: 0 10px 20px rbga(0, 0, 0, 1);
 }
