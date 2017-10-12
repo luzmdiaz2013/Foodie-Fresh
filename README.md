@@ -1,6 +1,6 @@
 # Foodie-Fresh
 GA Game - Project 1
-Link:
+Link: https://www.bitballoon.com/sites/guide-ant-80611
 
 
 Explanations of the technologies used
@@ -13,8 +13,16 @@ Explanations of the technologies used
 Approach taken
 
 User stories
-
+Acceptance Criteria
+- When I’m on the home screen 
+I see a banner with the name of the game a cutting board or marble counter.  Player ready start button
+- When I click start button 
+    a picture and multiple choice question appears. The counter panel appears
+- I make a selection and if correct the counter goes up by one. Next question appears after 2 seconds. (Repeat 4x)
+- I answer last question and 
+the counter displays the total score, if  correct  4/5 or higher, an alert with a recipe link appears.  If correct 3/5 or less, a “learn more” alert with an article link appears.
 Wireframes
+
 
 How-to-use instructions:
  - Welcome to Foodie Fresh, a culinary quiz! 
@@ -25,6 +33,7 @@ How-to-use instructions:
     3) Use the answer buttons to navigate through the questions.
     4) After the five questions are answered, you will receive your final score and a recipe or    article about the category.
     5) When you are done with the category, the game begins again.
+
 
 Unsolved problems:
 JS
