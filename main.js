@@ -57,7 +57,7 @@ let vegetablesCategory = [
                 //--------- This is the array that generates questions for Greens category ---------//
 
 let greensCategory = [
-  new QuestionCard('./images/arugula.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Arugula'),
+  new QuestionCard('./images/arugula.png', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Arugula'),
   new QuestionCard('./images/watercress.png', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Watercress'),
   new QuestionCard('./images/mizuna.png', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Mizuna'),
   new QuestionCard('./images/radicchio.jpg', ['Arugula', 'Frisee', 'Radicchio', 'Watercress', 'Mizuna'], 'Radicchio'),
