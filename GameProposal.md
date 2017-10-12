@@ -9,7 +9,7 @@ I chose this game because I have had an interest in the culinary arts and have b
 
 ## Wireframe
 
-(Your wireframes go here. Preferably two or more)
+wireframeFOODIE.jpg
 
 ## Initial thoughts on game structure
 
